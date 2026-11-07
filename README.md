@@ -6,13 +6,13 @@ The visualization pane deliberately starts blank with a faint **DV** mark. Chart
 
 ## Install and open
 
-Run **Data-Visualizer-Setup-0.4.0.exe** in `release/0.4.0` after packaging. The installer offers a desktop shortcut and registers the `.dv` document type. Launch Data Visualizer from its shortcut to create or open a document, or open a saved `.dv` file from Windows. This build is unsigned; Windows may show an unknown-publisher notice.
+Run **Data-Visualizer-Setup-0.4.1.exe** in `release/0.4.1` after packaging. The installer offers a desktop shortcut and registers the `.dv` document type. Launch Data Visualizer from its shortcut to create or open a document, or open a saved `.dv` file from Windows. This build is unsigned; Windows may show an unknown-publisher notice.
 
-The unpacked application is available at `release/0.4.0/win-unpacked/Data Visualizer.exe` after packaging. Keep the entire `win-unpacked` folder together; the executable depends on its neighboring files. Building or running the unpacked app does not install the application, create shortcuts, or register file associations. Those changes occur only when you run the installer.
+The unpacked application is available at `release/0.4.1/win-unpacked/Data Visualizer.exe` after packaging. Keep the entire `win-unpacked` folder together; the executable depends on its neighboring files. Building or running the unpacked app does not install the application, create shortcuts, or register file associations. Those changes occur only when you run the installer.
 
 ## Workspace
 
-- Choose **Create new file** to start with an empty document, or **Open a file** to select a local file.
+- On the welcome page, choose **Create new file** for an empty document, **Open a file** to select a local file, or **Open Folder** to add a folder to the explorer.
 - The **Text** pane appears on the left and the **Visualizer** pane on the right. Each title remains above the groups belonging to that pane.
 - Use **Layout** to choose text only, visualizer only, or split view, and to toggle Focus View.
 - Collapse or expand the explorer using the left activity rail. These panels have preset widths, with compact sizing in smaller windows.
@@ -85,7 +85,7 @@ Build the Windows installer and unpacked application:
 npm run dist
 ```
 
-With Electron 45, install the runtime explicitly with `node node_modules/electron/install.js` if dependency installation has not downloaded it. Version 0.4.0 build output is written to `release/0.4.0`; earlier builds are retained separately. The first dependency installation and packaging run may need internet access to download Electron and packaging tools. Normal app use does not require a development server. The source also includes `pnpm-lock.yaml` for reproducible pnpm installation.
+With Electron 45, install the runtime explicitly with `node node_modules/electron/install.js` if dependency installation has not downloaded it. Version 0.4.1 build output is written to `release/0.4.1`; earlier builds are retained separately. The first dependency installation and packaging run may need internet access to download Electron and packaging tools. Normal app use does not require a development server. The source also includes `pnpm-lock.yaml` for reproducible pnpm installation.
 
 ## Source layout
 
