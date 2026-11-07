@@ -1,14 +1,14 @@
 # Data Visualizer
 
-A local Windows desktop workspace for raw data and its visualization. Version 0.3 adds explorer multi-selection and drag-and-drop file and folder moves. The selected context menus and nested Text and Visualizer groups remain available. The desktop shell and document format follow [the original brief](docs/first-version-brief.txt).
+A local Windows desktop workspace for raw data and its visualization. Version 0.4 adds tab dragging to split an editor group at any edge, with a shaded preview. Explorer multi-selection, file and folder moves, selected context menus, and nested Text and Visualizer groups remain available. The desktop shell and document format follow [the original brief](docs/first-version-brief.txt).
 
 The visualization pane deliberately starts blank with a faint **DV** mark. Chart rendering and additional data tools can be added in subsequent versions.
 
 ## Install and open
 
-Run **Data-Visualizer-Setup-0.3.0.exe** in `release/0.3.0` after packaging. The installer offers a desktop shortcut and registers the `.dv` document type. Launch Data Visualizer from its shortcut to create or open a document, or open a saved `.dv` file from Windows. This build is unsigned; Windows may show an unknown-publisher notice.
+Run **Data-Visualizer-Setup-0.4.0.exe** in `release/0.4.0` after packaging. The installer offers a desktop shortcut and registers the `.dv` document type. Launch Data Visualizer from its shortcut to create or open a document, or open a saved `.dv` file from Windows. This build is unsigned; Windows may show an unknown-publisher notice.
 
-The unpacked application is available at `release/0.3.0/win-unpacked/Data Visualizer.exe` after packaging. Keep the entire `win-unpacked` folder together; the executable depends on its neighboring files. Building or running the unpacked app does not install the application, create shortcuts, or register file associations. Those changes occur only when you run the installer.
+The unpacked application is available at `release/0.4.0/win-unpacked/Data Visualizer.exe` after packaging. Keep the entire `win-unpacked` folder together; the executable depends on its neighboring files. Building or running the unpacked app does not install the application, create shortcuts, or register file associations. Those changes occur only when you run the installer.
 
 ## Workspace
 
@@ -19,6 +19,7 @@ The unpacked application is available at `release/0.3.0/win-unpacked/Data Visual
 - Add one or more folders to browse their supported text files. Added folders are remembered locally. Drag a file from the explorer onto an editor group to open it there.
 - Right-click a workspace folder, nested folder, or file for its selected actions. The exact menus are documented in [Context menus](docs/CONTEXT-MENUS.md).
 - Drag tabs to reorder them. Right-click a tab to split or move it between groups inside its current pane. These views share the same document content.
+- Drag a tab over the left, right, top, or bottom edge of an editor group's content to preview a half-size split, then release to move it there. Drop in the center to join that group, or on its tab bar to reorder. Empty source groups collapse automatically. Hold **Ctrl** while dropping to keep the original view and create another view of the same document. Files dragged from the explorer can also open together in a new split.
 - Pin tabs to keep them at the start of their group and protect them from bulk-close commands. An individual pinned tab can still be closed explicitly.
 - Closing one view keeps any other views of that document open. Closing its final view prompts to save changes. **File → Close document** closes the document's views.
 - Save documents through the **File** menu. An unsaved-change marker identifies edited documents.
@@ -84,7 +85,7 @@ Build the Windows installer and unpacked application:
 npm run dist
 ```
 
-With Electron 45, install the runtime explicitly with `node node_modules/electron/install.js` if dependency installation has not downloaded it. Version 0.3.0 build output is written to `release/0.3.0`; earlier builds are retained separately. The first dependency installation and packaging run may need internet access to download Electron and packaging tools. Normal app use does not require a development server. The source also includes `pnpm-lock.yaml` for reproducible pnpm installation.
+With Electron 45, install the runtime explicitly with `node node_modules/electron/install.js` if dependency installation has not downloaded it. Version 0.4.0 build output is written to `release/0.4.0`; earlier builds are retained separately. The first dependency installation and packaging run may need internet access to download Electron and packaging tools. Normal app use does not require a development server. The source also includes `pnpm-lock.yaml` for reproducible pnpm installation.
 
 ## Source layout
 
