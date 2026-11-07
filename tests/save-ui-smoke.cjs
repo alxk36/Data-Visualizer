@@ -1,0 +1,30 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs/promises');
+const path=require('node:path');
+const {_electron:electron}=require(process.env.DV_PLAYWRIGHT_PATH||'playwright');
+const root=path.resolve(__dirname,'..');
+let app;
+(async()=>{
+  const run=path.join(root,'test-results',`rapid-save-${Date.now()}`);
+  await fs.mkdir(run,{recursive:true});
+  const filePath=path.join(run,'Rapid.dv');
+  app=await electron.launch({executablePath:path.join(root,'node_modules/electron/dist/electron.exe'),args:[root],env:{...process.env,DV_USER_DATA_DIR:path.join(run,'profile')}});
+  const page=await app.firstWindow();page.setDefaultTimeout(10000);
+  await page.getByRole('button',{name:'Create new file'}).click();
+  await app.evaluate(({dialog,ipcMain},filePath)=>{
+    dialog.showSaveDialog=async()=>({canceled:false,filePath});
+    globalThis.refreshCount=0;
+    ipcMain.removeHandler('dv:refresh-workspace');
+    ipcMain.handle('dv:refresh-workspace',async()=>{globalThis.refreshCount++;await new Promise(resolve=>setTimeout(resolve,250));return [];});
+  },filePath);
+  await page.locator('#editor').fill('first saved version');
+  await page.keyboard.press('Control+s');
+  while(!await app.evaluate(()=>globalThis.refreshCount))await new Promise(resolve=>setTimeout(resolve,10));
+  await page.locator('#editor').fill('newer edit during save');
+  await page.keyboard.press('Control+s');
+  await page.waitForFunction(()=>document.querySelector('#status-message').textContent==='Saved locally');
+  await page.waitForFunction(()=>document.querySelector('#editor').value==='newer edit during save');
+  assert.equal(JSON.parse(await fs.readFile(filePath,'utf8')).content,'newer edit during save');
+  assert.equal(await app.evaluate(()=>globalThis.refreshCount),2);
+  console.log('Rapid-save regression passed: queued saves remain responsive and preserve newer edits.');
+})().catch(error=>{console.error(error);process.exitCode=1;}).finally(async()=>{if(app){await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows().forEach(win=>win.destroy())).catch(()=>{});await app.close().catch(()=>{});}});

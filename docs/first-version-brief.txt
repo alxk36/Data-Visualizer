@@ -1,0 +1,53 @@
+Data Visualizer (DV)
+
+Create a data visualizer application that can be installed locally on a desktop.
+
+
+Way it starts 
+- Press Application Icon
+- Open a locally saved file with the filetype
+
+
+Main screen
+Be able to choose which 
+	"create" a new file
+	file to "open" if application opened by pressing application icon.
+
+
+Once file created/opened
+
+Left side of the screen is the raw text data
+Right side of the screen is the data visualization
+(Like overleaf.com - image 1 provided)
+
+
+
+Screen Layout
+
+Have frame such as the minimize, maximize/Restore Down, close exactly same to the current version of this chatgpt application design, including the same colors and button texture, font size, font, etc..
+
+
+Top bar
+	Top bar size shouldn't be adjustable only default. The smallest size of the whole application window width should be the size of left section of the top bar, meaning it should be invincible in terms of size editing. 
+	Left: Logo of "DV" | File | Edit | Insert | View | Format | Help 
+	Middle : __File Name__
+	Right : History (with history icon) | Layout
+		"Layout" content : text only view | visualizer only view | split view || Focus View   -   this option box should open down wards(Like overleaf.com - image 2 provided)
+(The other function options will be added later on)
+
+
+Left Bar
+	Left bar size shouldn't be adjustable by the user. The smallest size of the whole application window height should be locked like this chatgpt design. 
+
+The left bar will look similar to both this chatgpt design and VScode design. (Like image 3 and 4) When it's minimized, it should look like chatgpt(image 3) and when maximized have it similar to VScode (image 4).
+
+
+
+Body
+
+Default has text on left and blank data visualizer space on the right with the faint "DV" logo (Like image 5 of faint VScode logo)
+
+For text box make sure there are line numbers, but only be created when your current line creates a new one. (like image 1)
+
+Make the tabs on both sides movable just like vscode.
+	Drag a file from left bar drop it on "text" box section adds the file to the working space. 

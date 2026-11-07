@@ -1,0 +1,10 @@
+Data Visualizer - earlier README.md release versions
+
+README-v0.1.0.md - release 0.1.0
+README-v0.2.0.md - release 0.2.0
+README-v0.3.0.md - release 0.3.0
+README-v0.4.0.md - release 0.4.0
+
+Recovered from the original README creation and successful edit records in this project's local development history. The complete edit sequence was replayed and its final text verified against the current README.md.
+
+These files preserve the recorded wording, encoded as UTF-8 with LF line endings. Relative links are preserved as they appeared in the original project. The current README.md was not changed.

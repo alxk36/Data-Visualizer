@@ -1,0 +1,40 @@
+Suggested Git commit messages for Data Visualizer README.md versions
+
+These are newly written suggestions based on the recovered README changes.
+This project folder is not a Git repository, so these are not historical
+Git commit messages and there are no associated commit hashes.
+
+Version 0.1.0
+------------
+docs(readme): add installation and workspace guide
+
+Describe local installation, the Text and Visualizer panes, document editing,
+.dv and plain-text formats, saved history, and development/build commands.
+
+Version 0.2.0
+------------
+docs(readme): document explorer actions and nested tab groups
+
+Explain workspace folders, file operations, comparison, search, previews,
+timeline, pinned tabs, shared document views, and versioned build locations.
+
+Version 0.3.0
+------------
+docs(readme): document multi-selection and drag-and-drop moves
+
+Describe Ctrl-click, Shift-click, Ctrl+A, moving files and folders together,
+destination protection, unsaved-document handling, and editor-group drops.
+
+Version 0.4.0
+------------
+docs(readme): document drag-to-split previews and Ctrl-copy
+
+Explain splitting at all four editor edges, nested splits, center drops,
+empty-source collapse, shared-view copying, and explorer files in new groups.
+
+Version 0.4.1 (current README)
+----------------------------
+docs(readme): document Open Folder on the welcome page
+
+Add Open Folder to the welcome-page instructions and update installer and
+unpacked-app paths to release 0.4.1.

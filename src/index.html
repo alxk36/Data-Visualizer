@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Data Visualizer</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="explorer.css">
+  <link rel="stylesheet" href="explorer-views.css">
+  <link rel="stylesheet" href="group-view.css">
+</head>
+<body>
+  <header class="titlebar">
+    <button class="brand" data-action="home" title="Data Visualizer home" aria-label="Data Visualizer home">D<span>V</span></button>
+    <nav class="main-menu" aria-label="Application menu">
+      <button data-menu="file">File</button><button data-menu="edit">Edit</button><button data-menu="insert">Insert</button><button data-menu="view">View</button><button data-menu="format">Format</button><button data-menu="help">Help</button>
+    </nav>
+    <div class="window-title" id="window-title">Data Visualizer</div>
+    <div class="title-actions"><button data-action="history" title="Save history" id="history-button"></button><button data-menu="layout" title="Change layout" id="layout-button"></button></div>
+    <div class="native-controls-space"></div>
+  </header>
+  <div class="app-shell">
+    <nav class="activity-bar" aria-label="Workspace navigation">
+      <div class="activity-top"><button data-action="home" title="Home" aria-label="Home" id="home-button"></button><button data-action="explorer" title="Toggle explorer (Ctrl+B)" aria-label="Toggle explorer" id="explorer-button"></button><button data-action="find" title="Find in text (Ctrl+F)" aria-label="Find in text" id="search-button"></button><div class="rail-divider"></div><button data-action="new" title="New document (Ctrl+N)" aria-label="New document" id="new-button"></button></div>
+      <div class="activity-bottom"><button data-action="shortcuts" title="Keyboard shortcuts" aria-label="Keyboard shortcuts" id="help-button"></button><button data-action="settings" title="Editor settings" aria-label="Editor settings" id="settings-button"></button><span class="local-badge" title="Local workspace">DV</span></div>
+    </nav>
+    <aside class="explorer" id="explorer" aria-label="File explorer">
+      <div class="explorer-heading"><span>EXPLORER</span><button data-action="explorer" title="Collapse explorer" aria-label="Collapse explorer" class="icon-button" id="collapse-button"></button></div>
+      <div class="folder-heading"><span id="folder-label">WORKSPACE</span><div><button data-action="new" title="New document" aria-label="New document" class="icon-button" id="add-file-button"></button><button data-action="open-folder" title="Open folder" aria-label="Open folder" class="icon-button" id="open-folder-button"></button></div></div>
+      <div class="file-list" id="file-list"></div>
+      <div class="explorer-footer"><span class="small-dot"></span><span>Stored on your computer</span></div>
+    </aside>
+    <main class="main-area" id="main-area">
+      <section class="welcome" id="welcome" aria-label="Welcome">
+        <div class="welcome-content"><div class="welcome-logo">D<span>V</span><i></i></div><div class="eyebrow">A SPACE FOR YOUR DATA</div><h1>Data Visualizer</h1><p>Start with text. Make room for insight.</p>
+          <div class="welcome-actions"><button class="primary-button" data-action="new"><span id="welcome-new-icon"></span>Create new file <kbd>Ctrl N</kbd></button><button class="secondary-button" data-action="open"><span id="welcome-open-icon"></span>Open a file <kbd>Ctrl O</kbd></button><button class="secondary-button" data-action="open-folder" id="welcome-open-folder"><span id="welcome-folder-icon"></span>Open Folder</button></div>
+          <div class="recent-section"><div class="section-label">RECENT FILES</div><div id="recent-list"></div></div>
+          <div class="welcome-note">Your files stay local. Your workspace stays yours.</div>
+        </div><span class="version-label">DATA VISUALIZER <span>0.4.1</span></span>
+      </section>
+      <section class="workspace hidden" id="workspace" aria-label="Document workspace">
+        <section class="pane text-pane" id="text-pane" aria-label="Text editor pane">
+          <div class="pane-toolbar"><span class="pane-label" id="text-pane-label"></span><div><button data-action="save" class="icon-button" title="Save (Ctrl+S)" aria-label="Save" id="save-button"></button><button data-action="new" class="icon-button" title="New document" aria-label="New document" id="pane-new-button"></button></div></div>
+          <div class="find-bar hidden" id="find-bar"><input id="find-input" aria-label="Find text" placeholder="Find in document…"><span id="find-result"></span><button class="icon-button" data-action="find-next" title="Next match" aria-label="Next match">↓</button><button class="icon-button" data-action="close-find" title="Close find" aria-label="Close find">×</button></div>
+          <div class="groups-host" id="text-groups"></div>
+        </section>
+        <div class="split-handle" id="split-handle" role="separator" aria-label="Resize editor and visualizer" aria-orientation="vertical" tabindex="0"></div>
+        <section class="pane visualizer-pane" id="visualizer-pane" aria-label="Data visualizer pane">
+          <div class="pane-toolbar"><span class="pane-label" id="visual-pane-label"></span><span class="canvas-tag">Data Visualizer</span></div>
+          <div class="groups-host" id="visualizer-groups"></div>
+        </section>
+      </section>
+      <button class="exit-focus hidden" data-action="focus" id="exit-focus">Exit focus <kbd>Esc</kbd></button>
+    </main>
+  </div>
+  <footer class="statusbar"><div><span class="small-dot"></span><span id="status-message">Local workspace</span></div><div><span id="document-format">Plain text</span><span>UTF-8</span><span id="cursor-position">Ln 1, Col 1</span><button data-action="wrap" id="wrap-status" title="Toggle word wrap">No wrap</button></div></footer>
+  <div class="menu-popup hidden" id="menu-popup" role="menu"></div>
+  <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="dialog"><div id="dialog-content"></div></dialog>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>

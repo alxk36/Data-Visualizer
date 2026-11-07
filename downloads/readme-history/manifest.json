@@ -1,0 +1,33 @@
+{
+  "verification": "All recorded edits replay to the current README.md exactly after newline normalization.",
+  "versions": [
+    {
+      "version": "0.1.0",
+      "file": "README-v0.1.0.md",
+      "last_recorded_edit_utc": "2026-11-07T04:21:11.422Z",
+      "sha256": "e6a959cc7c915d8b4452482dfdc539ff83debb08d447198b48bfd89b8151da11",
+      "bytes": 4187
+    },
+    {
+      "version": "0.2.0",
+      "file": "README-v0.2.0.md",
+      "last_recorded_edit_utc": "2026-11-07T04:47:07.273Z",
+      "sha256": "def876e7fc40d4e1abdd7715b8f61d68f19835e49a1e3c64c479e4cd555bdfbe",
+      "bytes": 6447
+    },
+    {
+      "version": "0.3.0",
+      "file": "README-v0.3.0.md",
+      "last_recorded_edit_utc": "2026-11-07T05:26:37.374Z",
+      "sha256": "156f66058baf868ec28700fbd70e95a3b25c5ec327d98691554c87223cb9d619",
+      "bytes": 7316
+    },
+    {
+      "version": "0.4.0",
+      "file": "README-v0.4.0.md",
+      "last_recorded_edit_utc": "2026-11-07T05:37:26.493Z",
+      "sha256": "95dcdae32977c47e973596f4cd6d35a6189d2c7c9f2db8cdaa27ec6cd65dc9a2",
+      "bytes": 7800
+    }
+  ]
+}
