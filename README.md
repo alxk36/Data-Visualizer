@@ -1,14 +1,14 @@
 # Data Visualizer
 
-A local Windows desktop workspace for raw data and its visualization. Version 0.2 adds the selected explorer and tab context menus, plus groups within the Text and Visualizer panes. The desktop shell and document format follow [the original brief](docs/first-version-brief.txt).
+A local Windows desktop workspace for raw data and its visualization. Version 0.3 adds explorer multi-selection and drag-and-drop file and folder moves. The selected context menus and nested Text and Visualizer groups remain available. The desktop shell and document format follow [the original brief](docs/first-version-brief.txt).
 
 The visualization pane deliberately starts blank with a faint **DV** mark. Chart rendering and additional data tools can be added in subsequent versions.
 
 ## Install and open
 
-Run **Data-Visualizer-Setup-0.2.0.exe** in `release/0.2.0` after packaging. The installer offers a desktop shortcut and registers the `.dv` document type. Launch Data Visualizer from its shortcut to create or open a document, or open a saved `.dv` file from Windows. This build is unsigned; Windows may show an unknown-publisher notice.
+Run **Data-Visualizer-Setup-0.3.0.exe** in `release/0.3.0` after packaging. The installer offers a desktop shortcut and registers the `.dv` document type. Launch Data Visualizer from its shortcut to create or open a document, or open a saved `.dv` file from Windows. This build is unsigned; Windows may show an unknown-publisher notice.
 
-The unpacked application is available at `release/0.2.0/win-unpacked/Data Visualizer.exe` after packaging. Keep the entire `win-unpacked` folder together; the executable depends on its neighboring files. Building or running the unpacked app does not install the application, create shortcuts, or register file associations. Those changes occur only when you run the installer.
+The unpacked application is available at `release/0.3.0/win-unpacked/Data Visualizer.exe` after packaging. Keep the entire `win-unpacked` folder together; the executable depends on its neighboring files. Building or running the unpacked app does not install the application, create shortcuts, or register file associations. Those changes occur only when you run the installer.
 
 ## Workspace
 
@@ -31,6 +31,10 @@ The appearance follows the supplied dark desktop references and uses native Wind
 ## Explorer actions
 
 Create files and folders inside an added workspace folder. New files without an extension use `.dv`. Rename preserves a file's extension; use **Save As** to change its format.
+
+**Ctrl-click** toggles individual explorer items; **Shift-click** selects a visible range. **Ctrl+A** selects the visible files and nested folders. Drag a selected file or folder onto a highlighted destination folder to move the selection together, including between added workspace folders. Selecting both a folder and its contents moves the folder once. Workspace roots stay in place. Folders cannot be moved inside themselves or their descendants. Open documents keep their unsaved changes and follow their new paths. If the selection includes an Untitled document without a file path, save it first before moving the selection on disk.
+
+Dragging selected files onto an editor group opens them there. Explorer context-menu commands act on the item you right-click; keyboard file commands act on the focused item.
 
 **Cut**, **Copy**, and **Paste** work on explorer items using the app's file clipboard. Name conflicts produce a separate name such as `data copy.csv`. Moving between drives copies the complete item and checks the source before removing it. **Copy Path** and **Copy Relative Path** place text on the Windows clipboard.
 
@@ -80,7 +84,7 @@ Build the Windows installer and unpacked application:
 npm run dist
 ```
 
-With Electron 45, install the runtime explicitly with `node node_modules/electron/install.js` if dependency installation has not downloaded it. Version 0.2.0 build output is written to `release/0.2.0`; the earlier build is retained separately. The first dependency installation and packaging run may need internet access to download Electron and packaging tools. Normal app use does not require a development server. The source also includes `pnpm-lock.yaml` for reproducible pnpm installation.
+With Electron 45, install the runtime explicitly with `node node_modules/electron/install.js` if dependency installation has not downloaded it. Version 0.3.0 build output is written to `release/0.3.0`; earlier builds are retained separately. The first dependency installation and packaging run may need internet access to download Electron and packaging tools. Normal app use does not require a development server. The source also includes `pnpm-lock.yaml` for reproducible pnpm installation.
 
 ## Source layout
 
